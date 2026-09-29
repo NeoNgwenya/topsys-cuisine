@@ -1,0 +1,12 @@
+allowBuilds:
+  '@parcel/watcher': set this to true or false
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - sharp
+supportedArchitectures:
+  os:
+    - current
+  cpu:
+    - current
+  libc:
+    - current
