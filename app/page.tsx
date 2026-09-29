@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./page.module.scss";
 
 const whatsappHref =
@@ -34,15 +33,15 @@ export default function Home() {
   return (
     <main>
       <header className={styles.header}>
-        <Link className={styles.brand} href="/" aria-label="Topsy's Cuisine home">
+        <a className={styles.brand} href="/" aria-label="Topsy's Cuisine home">
           <span className={styles.brandMark}>T</span>
           <span>Topsy&apos;s Cuisine</span>
-        </Link>
+        </a>
         <nav className={styles.nav} aria-label="Main navigation">
           <a href="#services">What we do</a>
           <a href="#story">Our story</a>
           <a href="#gallery">Food gallery</a>
-          <Link href="/events">Events</Link>
+          <a href="/events/">Events</a>
         </nav>
         <a className={styles.headerCta} href={whatsappHref} target="_blank" rel="noreferrer">
           Plan your menu
@@ -173,7 +172,7 @@ export default function Home() {
         <p>
           We&apos;re preparing a journal of memorable gatherings, the menus we created and the food that brought each occasion to life.
         </p>
-        <Link className={styles.textLink} href="/events">Visit the events journal</Link>
+        <a className={styles.textLink} href="/events/">Visit the events journal</a>
       </section>
 
       <section className={styles.contact} id="contact">

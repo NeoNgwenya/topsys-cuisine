@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./events.module.scss";
 
 export const metadata = {
@@ -10,7 +9,7 @@ export default function EventsPage() {
   return (
     <main className={styles.page}>
       <nav className={styles.nav}>
-        <Link href="/">← Back home</Link>
+        <a href="/">← Back home</a>
         <span>Topsy&apos;s Cuisine</span>
       </nav>
       <section className={styles.content}>
