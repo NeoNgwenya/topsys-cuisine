@@ -4,7 +4,9 @@ import { useEffect } from "react";
 
 export default function MotionObserver() {
   useEffect(() => {
-    const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal], [data-pop]"),
+    );
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (prefersReducedMotion || !("IntersectionObserver" in window)) {

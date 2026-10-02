@@ -8,16 +8,19 @@ const whatsappHref =
 const services = [
   {
     number: "01",
+    icon: "cloche",
     title: "Executive catering",
     body: "Professional food and attentive service for private celebrations, corporate functions and high-profile events.",
   },
   {
     number: "02",
+    icon: "menu",
     title: "Tailor-made menus",
     body: "Menus shaped around your occasion, healthy-eating goals, local produce and special dietary requirements.",
   },
   {
     number: "03",
+    icon: "table",
     title: "Complete table service",
     body: "Glassware, crockery, cutlery and other serving equipment can be supplied for a smooth, complete event.",
   },
@@ -33,10 +36,32 @@ const gallery = [
 ];
 
 const videos = [
-  { src: "/videos/140c249a-8768-470d-81ff-039f351b64d3.mov", label: "In the kitchen", poster: "/images/59116e56-c674-4764-a652-992157843f6f.jpeg" },
-  { src: "/videos/31f1ad0c-41d5-423d-ac78-25774b39e969.mov", label: "Prepared with care", poster: "/images/bd6e6f27-4816-431c-bcf1-2872d620cf1d.jpeg" },
-  { src: "/videos/3a953c9e-ef1a-4952-9498-6dfff225676c.mov", label: "Ready to serve", poster: "/images/f3e1f0f8-be1c-4803-a532-ff4227853e97.jpeg" },
+  { src: "/videos/140c249a-8768-470d-81ff-039f351b64d3.mp4", label: "In the kitchen", poster: "/images/59116e56-c674-4764-a652-992157843f6f.jpeg" },
+  { src: "/videos/31f1ad0c-41d5-423d-ac78-25774b39e969.mp4", label: "Prepared with care", poster: "/images/bd6e6f27-4816-431c-bcf1-2872d620cf1d.jpeg" },
+  { src: "/videos/3a953c9e-ef1a-4952-9498-6dfff225676c.mp4", label: "Ready to serve", poster: "/images/f3e1f0f8-be1c-4803-a532-ff4227853e97.jpeg" },
 ];
+
+function ServiceIcon({ name }: { name: string }) {
+  if (name === "menu") {
+    return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8h20v32H14zM19 16h10M19 23h10M19 30h7" /></svg>;
+  }
+  if (name === "table") {
+    return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 22h32M12 22v18M36 22v18M15 15c0-4 4-7 9-7s9 3 9 7M13 15h22" /></svg>;
+  }
+  return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 31h34M11 28c1-10 6-16 13-16s12 6 13 16M24 8v4M5 36h38" /></svg>;
+}
+
+function PhoneIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.5 10 7.9 8.1 10c1.2 2.5 3.3 4.6 5.8 5.8L16 14l4.5 2.8-.7 3.6c-.2.8-.9 1.3-1.7 1.3C9.4 20.9 3.1 14.6 2.3 5.9c-.1-.8.5-1.5 1.3-1.7l3.6-.7Z" /></svg>;
+}
+
+function FacebookIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v7h4v-7h3.4l.6-4h-4V9c0-.7.3-1 1-1Z" /></svg>;
+}
+
+function InstagramIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" className={styles.iconDot} /></svg>;
+}
 
 export default function Home() {
   return (
@@ -70,8 +95,8 @@ export default function Home() {
             <a className={styles.primaryButton} href={whatsappHref} target="_blank" rel="noreferrer">
               Chat on WhatsApp
             </a>
-            <a className={styles.textLink} href="tel:+263710825380">
-              Call +263 71 082 5380
+            <a className={`${styles.textLink} ${styles.iconLink}`} href="tel:+263710825380" aria-label="Call Topsy on +263 71 082 5380">
+              <PhoneIcon /> Call Topsy
             </a>
           </div>
         </div>
@@ -86,7 +111,7 @@ export default function Home() {
               className={styles.heroImage}
             />
           </div>
-          <div className={styles.heroBadge}>
+          <div className={styles.heroBadge} data-pop data-pop-delay="hero">
             <span>Made with</span>
             <strong>heart</strong>
           </div>
@@ -94,7 +119,13 @@ export default function Home() {
       </section>
 
       <section className={styles.marquee} aria-label="Topsy's Cuisine values" data-reveal>
-        <span>Fresh ingredients</span><i>♥</i><span>Tailor-made menus</span><i>♥</i><span>Professional service</span><i>♥</i><span>Made in Bulawayo</span>
+        <div className={styles.marqueeTrack}>
+          {[false, true].map((duplicate) => (
+            <div className={styles.marqueeGroup} aria-hidden={duplicate || undefined} key={String(duplicate)}>
+              <span>Fresh ingredients</span><i>♥</i><span>Tailor-made menus</span><i>♥</i><span>Professional service</span><i>♥</i><span>Made in Bulawayo</span><i>♥</i>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className={styles.services} id="services" data-reveal>
@@ -105,9 +136,14 @@ export default function Home() {
         <div className={styles.serviceList}>
           {services.map((service) => (
             <article className={styles.serviceCard} key={service.number} data-reveal-child>
-              <span>{service.number}</span>
-              <h3>{service.title}</h3>
-              <p>{service.body}</p>
+              <div className={styles.serviceCardTop}>
+                <span>{service.number}</span>
+                <div className={styles.serviceIcon}><ServiceIcon name={service.icon} /></div>
+              </div>
+              <div>
+                <h3>{service.title}</h3>
+                <p>{service.body}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -159,7 +195,7 @@ export default function Home() {
             Ask about a class
           </a>
         </div>
-        <div className={styles.priceSeal} aria-label="Ten US dollars a class">
+        <div className={styles.priceSeal} aria-label="Ten US dollars a class" data-pop data-pop-delay="short">
           <strong>$10</strong>
           <span>a class</span>
         </div>
@@ -192,7 +228,7 @@ export default function Home() {
           {videos.map((video) => (
             <figure key={video.src} data-reveal-child>
               <video controls playsInline preload="metadata" poster={video.poster}>
-                <source src={video.src} type="video/quicktime" />
+                <source src={video.src} type="video/mp4" />
                 Your browser does not support this video.
               </video>
               <figcaption>{video.label}</figcaption>
@@ -218,18 +254,18 @@ export default function Home() {
         <p>Share your date, guest count, dietary needs and the kind of service you have in mind. Free samples are available on request.</p>
         <div className={styles.contactActions}>
           <a className={styles.goldButton} href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp us</a>
-          <a href="tel:+263710825380">+263 71 082 5380</a>
+          <a className={styles.contactIconLink} href="tel:+263710825380" aria-label="Call Topsy on +263 71 082 5380"><PhoneIcon />Call Topsy</a>
           <a href="mailto:topsyscuisine@gmail.com">topsyscuisine@gmail.com</a>
         </div>
         <div className={styles.socialDetails}>
-          <span>Facebook: Topsy&apos;s Cuisine</span>
-          <span>Instagram: @topsyscuisine</span>
+          <a href="https://www.facebook.com/topsyscuisine" target="_blank" rel="noreferrer" aria-label="Topsy's Cuisine on Facebook"><FacebookIcon /><span>Facebook</span></a>
+          <a href="https://www.instagram.com/topsyscuisine/" target="_blank" rel="noreferrer" aria-label="Topsy's Cuisine on Instagram"><InstagramIcon /><span>Instagram</span></a>
         </div>
       </section>
 
       <footer className={styles.footer}>
         <div className={styles.footerBrand}>Topsy&apos;s Cuisine</div>
-        <p>Bulawayo, Zimbabwe · A taste of heaven</p>
+        <p>A taste of heaven</p>
         <a className={styles.siteCredit} href="https://neongwenya.co.za" target="_blank" rel="noreferrer">
           Website done by Neo Ngwenya
         </a>

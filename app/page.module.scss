@@ -29,17 +29,23 @@
 .primaryButton, .lightButton, .goldButton { display: inline-flex; justify-content: center; align-items: center; min-height: 52px; padding: 0 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 900; transition: transform .25s ease, box-shadow .25s ease, filter .25s ease; &:hover, &:focus-visible { transform: translateY(-4px) scale(1.015); box-shadow: 0 14px 28px rgba($ink,.2); filter: saturate(1.12); } &:active { transform: translateY(-1px) scale(.99); } }
 .primaryButton { background: $red; color: white; }
 .textLink { color: inherit; font-weight: 800; text-underline-offset: .25rem; transition: color .25s ease, text-underline-offset .25s ease; &:hover, &:focus-visible { color: $red; text-underline-offset: .45rem; } }
+.iconLink { display: inline-flex; align-items: center; gap: .55rem; svg { width: 1.15rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; } }
 .heroVisual { position: relative; min-height: 720px; padding: 3rem 3rem 3rem 0; }
 .heroImageWrap { position: relative; height: 100%; min-height: 630px; border-radius: 0 0 0 12rem; overflow: hidden; }
 .heroImage { object-fit: cover; animation: heroImageIn 1.2s both cubic-bezier(.22, 1, .36, 1); }
 .heroBadge { position: absolute; left: -2.6rem; bottom: 5rem; width: 150px; aspect-ratio: 1; display: grid; place-content: center; text-align: center; background: $gold; border: 8px solid $cream; border-radius: 50%; transform: rotate(-8deg); color: $green; span { text-transform: uppercase; font-size: .68rem; letter-spacing: .12em; font-weight: 800; } strong { display: block; font: italic 2rem Georgia, serif; } }
 
-.marquee { background: $red; color: white; padding: 1.05rem 2rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; text-transform: uppercase; font-size: .76rem; font-weight: 900; letter-spacing: .12em; i { color: $gold; font-style: normal; } }
+.marquee { background: $red; color: white; padding: 1.05rem 0; overflow: hidden; text-transform: uppercase; font-size: .76rem; font-weight: 900; letter-spacing: .12em; }
+.marqueeTrack { width: max-content; display: flex; animation: marquee-scroll 26s linear infinite; }
+.marqueeGroup { display: flex; align-items: center; gap: 1.5rem; padding-right: 1.5rem; white-space: nowrap; i { color: $gold; font-style: normal; } }
 
-.services { padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 8vw, 8rem); background: $paper; display: grid; grid-template-columns: .8fr 1.2fr; gap: 8vw; }
+.services { padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 8vw, 8rem); background: $paper; display: grid; grid-template-columns: .8fr 1.2fr; gap: 8vw; align-items: start; }
+.sectionHeading { position: sticky; top: 3rem; }
 .sectionHeading h2, .storyCopy h2, .classes h2, .galleryHeading h2, .videoHeading h2 { font-size: clamp(3.1rem, 5.4vw, 5.5rem); line-height: .92; }
-.serviceList { border-top: 1px solid rgba($ink,.18); }
-.serviceCard { display: grid; grid-template-columns: 3rem 1fr 1.2fr; gap: 1.4rem; align-items: start; padding: 2rem 0; border-bottom: 1px solid rgba($ink,.18); span { color: $red; font-weight: 900; font-size: .75rem; } h3 { margin: 0; font: 700 1.35rem Georgia, serif; } p { margin: 0; color: rgba($ink,.68); line-height: 1.65; } }
+.serviceList { display: grid; gap: 1.5rem; }
+.serviceCard { min-height: 330px; padding: clamp(2rem, 4vw, 3rem); background: $cream; border: 1px solid rgba($ink,.09); border-radius: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 16px 45px rgba($ink,.07); transition: transform .35s ease, box-shadow .35s ease; &:hover { transform: translateY(-5px); box-shadow: 0 24px 55px rgba($ink,.12); } span { color: $red; font-weight: 900; font-size: .75rem; } h3 { margin: 0 0 1rem; font: 700 clamp(1.8rem, 3vw, 2.65rem) Georgia, serif; letter-spacing: -.035em; } p { max-width: 600px; margin: 0; color: rgba($ink,.68); line-height: 1.7; font-size: 1.04rem; } }
+.serviceCardTop { display: flex; justify-content: space-between; align-items: start; }
+.serviceIcon { width: 76px; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: $red; color: $gold; svg { width: 44px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; } }
 
 .story { background: $green; color: white; padding: clamp(1.5rem, 6vw, 6rem); display: grid; grid-template-columns: minmax(300px, .85fr) 1fr; gap: clamp(3rem, 8vw, 8rem); align-items: center; }
 .storyPortrait { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 50% 50% 8% 50%; border: 10px solid rgba(255,255,255,.08); }
@@ -64,17 +70,21 @@
 .videoHeading { max-width: 1200px; margin: 0 auto 3.5rem; display: grid; grid-template-columns: 1fr .65fr; align-items: end; gap: 2rem 6vw; .eyebrow { color: $gold; grid-column: 1 / 3; } > p:last-child { margin: 0; max-width: 440px; color: rgba(255,255,255,.72); line-height: 1.7; } }
 .videoGrid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; figure { margin: 0; } video { width: 100%; aspect-ratio: 9 / 12; display: block; object-fit: cover; background: $ink; border-radius: .8rem; } figcaption { padding: 1rem .2rem 0; color: $gold; font-weight: 800; } }
 
-.eventsPreview { margin: 0 clamp(1.2rem, 4vw, 4rem) clamp(5rem, 9vw, 8rem); padding: clamp(3rem, 7vw, 6rem); background: $cream; display: grid; grid-template-columns: 1fr .8fr; gap: 3rem 8vw; align-items: end; border-radius: 1.5rem; .eyebrow { grid-column: 1; } h2 { font-size: clamp(3.2rem, 6vw, 6rem); line-height: .9; } > p { max-width: 520px; color: rgba($ink,.67); line-height: 1.7; font-size: 1.08rem; } > a { grid-column: 2; justify-self: start; } }
+.eventsPreview { margin: clamp(5rem, 9vw, 8rem) clamp(1.2rem, 4vw, 4rem); padding: clamp(3rem, 7vw, 6rem); background: $cream; display: grid; grid-template-columns: 1fr .8fr; gap: 3rem 8vw; align-items: end; border-radius: 1.5rem; .eyebrow { grid-column: 1; } h2 { font-size: clamp(3.2rem, 6vw, 6rem); line-height: .9; } > p { max-width: 520px; color: rgba($ink,.67); line-height: 1.7; font-size: 1.08rem; } > a { grid-column: 2; justify-self: start; } }
 
 .contact { background: $red; color: white; padding: clamp(5rem, 10vw, 9rem) 1.5rem; text-align: center; .eyebrow { color: $gold; } h2 { font-size: clamp(3.4rem, 7vw, 7.5rem); line-height: .9; max-width: 900px; margin: auto; } > p:not(.eyebrow) { max-width: 620px; margin: 2rem auto; font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,.8); } }
 .contactActions { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1.6rem; a { color: white; font-weight: 800; text-underline-offset: .3rem; } .goldButton { color: $ink; background: $gold; text-decoration: none; } }
-.socialDetails { margin-top: 2rem; display: flex; justify-content: center; flex-wrap: wrap; gap: .8rem 2rem; color: rgba(255,255,255,.68); font-size: .9rem; }
+.contactIconLink { display: inline-flex; align-items: center; gap: .55rem; svg { width: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; } }
+.socialDetails { margin-top: 2rem; display: flex; justify-content: center; flex-wrap: wrap; gap: .8rem 1rem; a { min-width: 48px; min-height: 48px; padding: 0 1rem; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; color: white; display: inline-flex; align-items: center; justify-content: center; gap: .55rem; text-decoration: none; font-size: .88rem; font-weight: 800; transition: background .25s ease, color .25s ease, transform .25s ease; &:hover, &:focus-visible { background: white; color: $red; transform: translateY(-3px); } } svg { width: 1.25rem; height: 1.25rem; fill: currentColor; } svg:not(:first-child) { fill: none; } }
+.socialDetails a:last-child svg { fill: none; stroke: currentColor; stroke-width: 1.8; }
+.iconDot { fill: currentColor; stroke: none; }
 .footer { min-height: 130px; padding: 2rem clamp(1.5rem, 5vw, 5rem); background: $green; color: rgba(255,255,255,.68); display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 2rem; font-size: .82rem; p:last-child { justify-self: end; } }
 .footerBrand { color: $gold; font: 700 1.3rem Georgia, serif; }
 .siteCredit { color: $gold; text-decoration-color: rgba($gold,.45); text-underline-offset: .25rem; font-weight: 800; transition: color .25s ease, text-underline-offset .25s ease; &:hover, &:focus-visible { color: white; text-underline-offset: .45rem; } }
 
 @keyframes heroCopyIn { from { opacity: 0; transform: translateY(2.5rem); } to { opacity: 1; transform: translateY(0); } }
 @keyframes heroImageIn { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: scale(1); } }
+@keyframes marquee-scroll { to { transform: translateX(-50%); } }
 
 @media (max-width: 1000px) {
   .header { grid-template-columns: 1fr auto; }
@@ -84,6 +94,7 @@
   .heroImageWrap { min-height: 530px; border-radius: 0 0 6rem 1rem; }
   .heroBadge { left: auto; right: 2rem; bottom: 2rem; }
   .services { grid-template-columns: 1fr; gap: 4rem; }
+  .sectionHeading { position: static; }
   .promises { grid-template-columns: 1fr 1fr; article:nth-child(2) { border-right: 0; } article:nth-child(-n+2) { border-bottom: 1px solid rgba($ink,.15); } }
   .classes { grid-template-columns: 1fr 1fr; }
   .priceSeal { grid-column: 2; justify-self: end; }
@@ -101,8 +112,7 @@
   .heroVisual { min-height: 430px; }
   .heroImageWrap { min-height: 400px; }
   .heroBadge { width: 120px; }
-  .marquee { justify-content: flex-start; }
-  .serviceCard { grid-template-columns: 2rem 1fr; p { grid-column: 2; } }
+  .serviceCard { min-height: 290px; }
   .story { grid-template-columns: 1fr; padding-top: 3rem; padding-bottom: 4rem; }
   .storyPortrait { max-width: 500px; }
   .classes { grid-template-columns: 1fr; }
@@ -121,5 +131,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .heroCopy, .heroImage { animation: none; }
-  .galleryGrid figure img, .brand, .brandMark, .nav a, .nav a::after, .headerCta, .primaryButton, .lightButton, .goldButton, .textLink, .siteCredit { transition: none; }
+  .marqueeTrack { animation: none; }
+  .galleryGrid figure img, .serviceCard, .brand, .brandMark, .nav a, .nav a::after, .headerCta, .primaryButton, .lightButton, .goldButton, .textLink, .siteCredit, .socialDetails a { transition: none; }
 }
