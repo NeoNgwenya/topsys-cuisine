@@ -86,7 +86,7 @@ export default function Home() {
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Executive catering · Bulawayo, Zimbabwe</p>
+          <p className={styles.eyebrow}>Executive catering</p>
           <h1>A taste of<br /><em>heaven.</em></h1>
           <p className={styles.heroIntro}>
             Fine food, dependable service and tailor-made menus for events where every detail matters.
@@ -227,7 +227,7 @@ export default function Home() {
         <div className={styles.videoGrid}>
           {videos.map((video) => (
             <figure key={video.src} data-reveal-child>
-              <video controls playsInline preload="metadata" poster={video.poster}>
+              <video controls muted playsInline preload="metadata" poster={video.poster}>
                 <source src={video.src} type="video/mp4" />
                 Your browser does not support this video.
               </video>
