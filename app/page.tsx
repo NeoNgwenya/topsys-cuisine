@@ -2,31 +2,39 @@ import Image from "next/image";
 import styles from "./page.module.scss";
 
 const whatsappHref =
-  "https://wa.me/263772381330?text=Hello%20Topsy%27s%20Cuisine%2C%20I%27d%20like%20to%20enquire%20about%20catering.";
+  "https://wa.me/263710825380?text=Hello%20Topsy%27s%20Cuisine%2C%20I%27d%20like%20to%20enquire%20about%20catering.";
 
 const services = [
   {
     number: "01",
-    title: "Event catering",
-    body: "Generous, colourful food for family celebrations, community gatherings and special occasions.",
+    title: "Executive catering",
+    body: "Professional food and attentive service for private celebrations, corporate functions and high-profile events.",
   },
   {
     number: "02",
-    title: "Made-to-order meals",
-    body: "Comforting plates and practical meal options prepared with care and full flavour.",
+    title: "Tailor-made menus",
+    body: "Menus shaped around your occasion, healthy-eating goals, local produce and special dietary requirements.",
   },
   {
     number: "03",
-    title: "Cooking classes",
-    body: "Friendly, step-by-step lessons for kids and adults—from simple dishes to confident cooking.",
+    title: "Complete table service",
+    body: "Glassware, crockery, cutlery and other serving equipment can be supplied for a smooth, complete event.",
   },
 ];
 
 const gallery = [
+  { src: "/images/59116e56-c674-4764-a652-992157843f6f.jpeg", alt: "Four plated roast meals prepared by Topsy's Cuisine" },
+  { src: "/images/bd6e6f27-4816-431c-bcf1-2872d620cf1d.jpeg", alt: "Roast chicken served with rice, pumpkin and salad" },
+  { src: "/images/f3e1f0f8-be1c-4803-a532-ff4227853e97.jpeg", alt: "Rich beef stew with rice, vegetables and salad" },
+  { src: "/images/ca571683-ab28-4fab-b761-fb0b61929272.jpeg", alt: "Golden chicken pieces served with chips and salad" },
   { src: "/images/IMG-20231028-WA0017.jpg", alt: "A generous mixed plate with chicken, beef, salads and vegetables" },
-  { src: "/images/IMG-20231028-WA0015.jpg", alt: "Freshly plated fried chicken with rice, vegetables and creamy salad" },
-  { src: "/images/IMG-20231028-WA0014.jpg", alt: "A colourful plate of grilled meat, chicken, potatoes and vegetables" },
   { src: "/images/IMG-20231028-WA0013.jpg", alt: "A freshly prepared filled roll cut in half" },
+];
+
+const videos = [
+  { src: "/videos/140c249a-8768-470d-81ff-039f351b64d3.mov", label: "In the kitchen", poster: "/images/59116e56-c674-4764-a652-992157843f6f.jpeg" },
+  { src: "/videos/31f1ad0c-41d5-423d-ac78-25774b39e969.mov", label: "Prepared with care", poster: "/images/bd6e6f27-4816-431c-bcf1-2872d620cf1d.jpeg" },
+  { src: "/videos/3a953c9e-ef1a-4952-9498-6dfff225676c.mov", label: "Ready to serve", poster: "/images/f3e1f0f8-be1c-4803-a532-ff4227853e97.jpeg" },
 ];
 
 export default function Home() {
@@ -41,6 +49,7 @@ export default function Home() {
           <a href="#services">What we do</a>
           <a href="#story">Our story</a>
           <a href="#gallery">Food gallery</a>
+          <a href="#videos">Videos</a>
           <a href="/events/">Events</a>
         </nav>
         <a className={styles.headerCta} href={whatsappHref} target="_blank" rel="noreferrer">
@@ -50,25 +59,25 @@ export default function Home() {
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Catering · Meals · Cooking classes</p>
-          <h1>Good food.<br /><em>Happier people.</em></h1>
+          <p className={styles.eyebrow}>Executive catering · Bulawayo, Zimbabwe</p>
+          <h1>A taste of<br /><em>heaven.</em></h1>
           <p className={styles.heroIntro}>
-            Food made with heart for tables full of stories, celebration and the people who matter most.
+            Fine food, dependable service and tailor-made menus for events where every detail matters.
           </p>
           <div className={styles.heroActions}>
             <a className={styles.primaryButton} href={whatsappHref} target="_blank" rel="noreferrer">
               Chat on WhatsApp
             </a>
-            <a className={styles.textLink} href="tel:+263772381330">
-              Call +263 77 238 1330
+            <a className={styles.textLink} href="tel:+263710825380">
+              Call +263 71 082 5380
             </a>
           </div>
         </div>
         <div className={styles.heroVisual}>
           <div className={styles.heroImageWrap}>
             <Image
-              src="/images/IMG-20231028-WA0017.jpg"
-              alt="A full plate catered by Topsy's Cuisine"
+              src="/images/59116e56-c674-4764-a652-992157843f6f.jpeg"
+              alt="A table of plated meals catered by Topsy's Cuisine"
               fill
               priority
               sizes="(max-width: 800px) 100vw, 52vw"
@@ -83,13 +92,13 @@ export default function Home() {
       </section>
 
       <section className={styles.marquee} aria-label="Topsy's Cuisine values">
-        <span>Tasty recipes</span><i>♥</i><span>Practical skills</span><i>♥</i><span>Healthy meals</span><i>♥</i><span>For the whole family</span>
+        <span>Fresh ingredients</span><i>♥</i><span>Tailor-made menus</span><i>♥</i><span>Professional service</span><i>♥</i><span>Made in Bulawayo</span>
       </section>
 
       <section className={styles.services} id="services">
         <div className={styles.sectionHeading}>
-          <p className={styles.eyebrow}>Made for your table</p>
-          <h2>Food that brings<br />people together.</h2>
+          <p className={styles.eyebrow}>Made for your occasion</p>
+          <h2>Everything your<br />table needs.</h2>
         </div>
         <div className={styles.serviceList}>
           {services.map((service) => (
@@ -105,7 +114,7 @@ export default function Home() {
       <section className={styles.story} id="story">
         <div className={styles.storyPortrait}>
           <Image
-            src="/images/IMG-20260913-WA0059.jpg"
+            src="/images/9b8b2208-3774-4e29-a7ae-c254d9f4caff.jpeg"
             alt="Topsy, chef and founder of Topsy's Cuisine"
             fill
             sizes="(max-width: 800px) 90vw, 40vw"
@@ -114,15 +123,22 @@ export default function Home() {
         </div>
         <div className={styles.storyCopy}>
           <p className={styles.eyebrow}>Meet Topsy</p>
-          <h2>Cooking with care,<br />sharing with joy.</h2>
+          <h2>Experience you can<br />trust at your table.</h2>
           <p className={styles.lead}>
-            Topsy&apos;s Cuisine is built around a simple belief: a good meal can brighten a whole day.
+            Established in Bulawayo, Topsy&apos;s Cuisine has built its name on fine food, dependable service and genuine care.
           </p>
           <p>
-            From satisfying plates for a crowd to supportive, hands-on cooking lessons, every experience is welcoming, practical and full of flavour.
+            Topsy and her experienced team understand health, hygiene and the careful preparation large events demand. More than 90% of the food is prepared in-house, with specialist products sourced only from selected suppliers.
           </p>
-          <div className={styles.signature}>Let&apos;s cook together!</div>
+          <div className={styles.signature}>A taste of heaven</div>
         </div>
+      </section>
+
+      <section className={styles.promises} aria-label="Our catering promise">
+        <article><strong>90%+</strong><span>of our food prepared in-house</span></article>
+        <article><strong>Fresh</strong><span>ingredients and strict quality control</span></article>
+        <article><strong>Flexible</strong><span>menus for dietary and healthy-eating needs</span></article>
+        <article><strong>Complete</strong><span>service with tableware and equipment available</span></article>
       </section>
 
       <section className={styles.classes}>
@@ -164,6 +180,25 @@ export default function Home() {
         </div>
       </section>
 
+      <section className={styles.videoSection} id="videos">
+        <div className={styles.videoHeading}>
+          <p className={styles.eyebrow}>Behind the scenes</p>
+          <h2>See Topsy&apos;s Cuisine<br />in motion.</h2>
+          <p>A closer look at the food, preparation and care that goes into every plate.</p>
+        </div>
+        <div className={styles.videoGrid}>
+          {videos.map((video) => (
+            <figure key={video.src}>
+              <video controls playsInline preload="metadata" poster={video.poster}>
+                <source src={video.src} type="video/quicktime" />
+                Your browser does not support this video.
+              </video>
+              <figcaption>{video.label}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       <section className={styles.eventsPreview}>
         <div>
           <p className={styles.eyebrow}>The table has stories</p>
@@ -178,17 +213,21 @@ export default function Home() {
       <section className={styles.contact} id="contact">
         <p className={styles.eyebrow}>Let&apos;s make something delicious</p>
         <h2>Tell us what you&apos;re planning.</h2>
-        <p>Share your date, guest count and the kind of meal you have in mind. We&apos;ll take it from there.</p>
+        <p>Share your date, guest count, dietary needs and the kind of service you have in mind. Free samples are available on request.</p>
         <div className={styles.contactActions}>
           <a className={styles.goldButton} href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp us</a>
-          <a href="tel:+263772381330">+263 77 238 1330</a>
+          <a href="tel:+263710825380">+263 71 082 5380</a>
           <a href="mailto:topsyscuisine@gmail.com">topsyscuisine@gmail.com</a>
+        </div>
+        <div className={styles.socialDetails}>
+          <span>Facebook: Topsy&apos;s Cuisine</span>
+          <span>Instagram: @topsyscuisine</span>
         </div>
       </section>
 
       <footer className={styles.footer}>
         <div className={styles.footerBrand}>Topsy&apos;s Cuisine</div>
-        <p>Good food. Happier people.</p>
+        <p>Bulawayo, Zimbabwe · A taste of heaven</p>
         <p>© {new Date().getFullYear()} Topsy&apos;s Cuisine</p>
       </footer>
     </main>
