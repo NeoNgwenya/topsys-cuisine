@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "./tokens" as *;
 
 .header {
@@ -13,24 +14,24 @@
   z-index: 10;
 }
 
-.brand { display: flex; align-items: center; gap: .7rem; color: $red; font: 700 1.25rem Georgia, serif; text-decoration: none; }
-.brandMark { width: 2.3rem; height: 2.3rem; display: grid; place-items: center; border-radius: 50%; background: $red; color: $gold; font-style: italic; }
-.nav { display: flex; gap: 2rem; a { color: $ink; text-decoration: none; font-size: .88rem; font-weight: 700; &:hover { color: $red; } } }
-.headerCta { justify-self: end; background: $green; color: white; text-decoration: none; padding: .8rem 1.2rem; border-radius: 999px; font-weight: 800; font-size: .88rem; }
+.brand { display: flex; align-items: center; gap: .7rem; color: $red; font: 700 1.25rem Georgia, serif; text-decoration: none; transition: transform .25s ease; &:hover { transform: translateY(-2px); } }
+.brandMark { width: 2.3rem; height: 2.3rem; display: grid; place-items: center; border-radius: 50%; background: $red; color: $gold; font-style: italic; transition: transform .45s cubic-bezier(.22, 1, .36, 1); .brand:hover & { transform: rotate(-10deg) scale(1.08); } }
+.nav { display: flex; gap: 2rem; a { color: $ink; position: relative; text-decoration: none; font-size: .88rem; font-weight: 700; transition: color .25s ease; &::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -.45rem; height: 2px; background: $red; transition: right .3s cubic-bezier(.22, 1, .36, 1); } &:hover, &:focus-visible { color: $red; &::after { right: 0; } } } }
+.headerCta { justify-self: end; background: $green; color: white; text-decoration: none; padding: .8rem 1.2rem; border-radius: 999px; font-weight: 800; font-size: .88rem; transition: transform .25s ease, box-shadow .25s ease, background .25s ease; &:hover, &:focus-visible { transform: translateY(-3px); box-shadow: 0 10px 24px rgba($green,.24); background: color.adjust($green, $lightness: 5%); } }
 
 .hero { min-height: 720px; display: grid; grid-template-columns: .9fr 1.1fr; background: $cream; overflow: hidden; }
-.heroCopy { padding: clamp(5rem, 9vw, 9rem) 4vw 5rem clamp(1.5rem, 8vw, 8rem); align-self: center; z-index: 2; }
+.heroCopy { padding: clamp(5rem, 9vw, 9rem) 4vw 5rem clamp(1.5rem, 8vw, 8rem); align-self: center; z-index: 2; animation: heroCopyIn .9s .1s both cubic-bezier(.22, 1, .36, 1); }
 .eyebrow { margin: 0 0 1.5rem; color: $red; text-transform: uppercase; font-size: .76rem; font-weight: 900; letter-spacing: .17em; }
 .hero h1, .sectionHeading h2, .storyCopy h2, .classes h2, .galleryHeading h2, .videoHeading h2, .eventsPreview h2, .contact h2 { margin: 0; font-family: Georgia, serif; letter-spacing: -.055em; }
 .hero h1 { font-size: clamp(4.1rem, 7.3vw, 8.2rem); line-height: .82; font-weight: 700; em { color: $red; font-weight: 400; } }
 .heroIntro { max-width: 540px; margin: 2rem 0; font-size: 1.25rem; line-height: 1.65; color: rgba($ink, .72); }
 .heroActions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
-.primaryButton, .lightButton, .goldButton { display: inline-flex; justify-content: center; align-items: center; min-height: 52px; padding: 0 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 900; }
+.primaryButton, .lightButton, .goldButton { display: inline-flex; justify-content: center; align-items: center; min-height: 52px; padding: 0 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 900; transition: transform .25s ease, box-shadow .25s ease, filter .25s ease; &:hover, &:focus-visible { transform: translateY(-4px) scale(1.015); box-shadow: 0 14px 28px rgba($ink,.2); filter: saturate(1.12); } &:active { transform: translateY(-1px) scale(.99); } }
 .primaryButton { background: $red; color: white; }
-.textLink { color: inherit; font-weight: 800; text-underline-offset: .25rem; }
+.textLink { color: inherit; font-weight: 800; text-underline-offset: .25rem; transition: color .25s ease, text-underline-offset .25s ease; &:hover, &:focus-visible { color: $red; text-underline-offset: .45rem; } }
 .heroVisual { position: relative; min-height: 720px; padding: 3rem 3rem 3rem 0; }
 .heroImageWrap { position: relative; height: 100%; min-height: 630px; border-radius: 0 0 0 12rem; overflow: hidden; }
-.heroImage { object-fit: cover; }
+.heroImage { object-fit: cover; animation: heroImageIn 1.2s both cubic-bezier(.22, 1, .36, 1); }
 .heroBadge { position: absolute; left: -2.6rem; bottom: 5rem; width: 150px; aspect-ratio: 1; display: grid; place-content: center; text-align: center; background: $gold; border: 8px solid $cream; border-radius: 50%; transform: rotate(-8deg); color: $green; span { text-transform: uppercase; font-size: .68rem; letter-spacing: .12em; font-weight: 800; } strong { display: block; font: italic 2rem Georgia, serif; } }
 
 .marquee { background: $red; color: white; padding: 1.05rem 2rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; text-transform: uppercase; font-size: .76rem; font-weight: 900; letter-spacing: .12em; i { color: $gold; font-style: normal; } }
@@ -68,8 +69,12 @@
 .contact { background: $red; color: white; padding: clamp(5rem, 10vw, 9rem) 1.5rem; text-align: center; .eyebrow { color: $gold; } h2 { font-size: clamp(3.4rem, 7vw, 7.5rem); line-height: .9; max-width: 900px; margin: auto; } > p:not(.eyebrow) { max-width: 620px; margin: 2rem auto; font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,.8); } }
 .contactActions { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1.6rem; a { color: white; font-weight: 800; text-underline-offset: .3rem; } .goldButton { color: $ink; background: $gold; text-decoration: none; } }
 .socialDetails { margin-top: 2rem; display: flex; justify-content: center; flex-wrap: wrap; gap: .8rem 2rem; color: rgba(255,255,255,.68); font-size: .9rem; }
-.footer { min-height: 130px; padding: 2rem clamp(1.5rem, 5vw, 5rem); background: $green; color: rgba(255,255,255,.68); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 2rem; font-size: .82rem; p:last-child { justify-self: end; } }
+.footer { min-height: 130px; padding: 2rem clamp(1.5rem, 5vw, 5rem); background: $green; color: rgba(255,255,255,.68); display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 2rem; font-size: .82rem; p:last-child { justify-self: end; } }
 .footerBrand { color: $gold; font: 700 1.3rem Georgia, serif; }
+.siteCredit { color: $gold; text-decoration-color: rgba($gold,.45); text-underline-offset: .25rem; font-weight: 800; transition: color .25s ease, text-underline-offset .25s ease; &:hover, &:focus-visible { color: white; text-underline-offset: .45rem; } }
+
+@keyframes heroCopyIn { from { opacity: 0; transform: translateY(2.5rem); } to { opacity: 1; transform: translateY(0); } }
+@keyframes heroImageIn { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: scale(1); } }
 
 @media (max-width: 1000px) {
   .header { grid-template-columns: 1fr auto; }
@@ -115,5 +120,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .galleryGrid figure img { transition: none; }
+  .heroCopy, .heroImage { animation: none; }
+  .galleryGrid figure img, .brand, .brandMark, .nav a, .nav a::after, .headerCta, .primaryButton, .lightButton, .goldButton, .textLink, .siteCredit { transition: none; }
 }

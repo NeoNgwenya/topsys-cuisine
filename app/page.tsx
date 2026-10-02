@@ -1,4 +1,5 @@
 import Image from "next/image";
+import MotionObserver from "./MotionObserver";
 import styles from "./page.module.scss";
 
 const whatsappHref =
@@ -40,6 +41,7 @@ const videos = [
 export default function Home() {
   return (
     <main>
+      <MotionObserver />
       <header className={styles.header}>
         <a className={styles.brand} href="/" aria-label="Topsy's Cuisine home">
           <span className={styles.brandMark}>T</span>
@@ -91,18 +93,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.marquee} aria-label="Topsy's Cuisine values">
+      <section className={styles.marquee} aria-label="Topsy's Cuisine values" data-reveal>
         <span>Fresh ingredients</span><i>♥</i><span>Tailor-made menus</span><i>♥</i><span>Professional service</span><i>♥</i><span>Made in Bulawayo</span>
       </section>
 
-      <section className={styles.services} id="services">
+      <section className={styles.services} id="services" data-reveal>
         <div className={styles.sectionHeading}>
           <p className={styles.eyebrow}>Made for your occasion</p>
           <h2>Everything your<br />table needs.</h2>
         </div>
         <div className={styles.serviceList}>
           {services.map((service) => (
-            <article className={styles.serviceCard} key={service.number}>
+            <article className={styles.serviceCard} key={service.number} data-reveal-child>
               <span>{service.number}</span>
               <h3>{service.title}</h3>
               <p>{service.body}</p>
@@ -111,10 +113,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.story} id="story">
+      <section className={styles.story} id="story" data-reveal>
         <div className={styles.storyPortrait}>
           <Image
-            src="/images/9b8b2208-3774-4e29-a7ae-c254d9f4caff.jpeg"
+            src="/images/Topsy.jpeg"
             alt="Topsy, chef and founder of Topsy's Cuisine"
             fill
             sizes="(max-width: 800px) 90vw, 40vw"
@@ -134,14 +136,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.promises} aria-label="Our catering promise">
-        <article><strong>90%+</strong><span>of our food prepared in-house</span></article>
-        <article><strong>Fresh</strong><span>ingredients and strict quality control</span></article>
-        <article><strong>Flexible</strong><span>menus for dietary and healthy-eating needs</span></article>
-        <article><strong>Complete</strong><span>service with tableware and equipment available</span></article>
+      <section className={styles.promises} aria-label="Our catering promise" data-reveal>
+        <article data-reveal-child><strong>90%+</strong><span>of our food prepared in-house</span></article>
+        <article data-reveal-child><strong>Fresh</strong><span>ingredients and strict quality control</span></article>
+        <article data-reveal-child><strong>Flexible</strong><span>menus for dietary and healthy-eating needs</span></article>
+        <article data-reveal-child><strong>Complete</strong><span>service with tableware and equipment available</span></article>
       </section>
 
-      <section className={styles.classes}>
+      <section className={styles.classes} data-reveal>
         <div>
           <p className={styles.eyebrow}>Learn with Topsy</p>
           <h2>Find your confidence<br />in the kitchen.</h2>
@@ -163,7 +165,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.gallerySection} id="gallery">
+      <section className={styles.gallerySection} id="gallery" data-reveal>
         <div className={styles.galleryHeading}>
           <div>
             <p className={styles.eyebrow}>From our kitchen</p>
@@ -173,14 +175,14 @@ export default function Home() {
         </div>
         <div className={styles.galleryGrid}>
           {gallery.map((image, index) => (
-            <figure className={styles[`galleryItem${index + 1}`]} key={image.src}>
+            <figure className={styles[`galleryItem${index + 1}`]} key={image.src} data-reveal-child>
               <Image src={image.src} alt={image.alt} fill sizes="(max-width: 800px) 100vw, 50vw" />
             </figure>
           ))}
         </div>
       </section>
 
-      <section className={styles.videoSection} id="videos">
+      <section className={styles.videoSection} id="videos" data-reveal>
         <div className={styles.videoHeading}>
           <p className={styles.eyebrow}>Behind the scenes</p>
           <h2>See Topsy&apos;s Cuisine<br />in motion.</h2>
@@ -188,7 +190,7 @@ export default function Home() {
         </div>
         <div className={styles.videoGrid}>
           {videos.map((video) => (
-            <figure key={video.src}>
+            <figure key={video.src} data-reveal-child>
               <video controls playsInline preload="metadata" poster={video.poster}>
                 <source src={video.src} type="video/quicktime" />
                 Your browser does not support this video.
@@ -199,7 +201,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.eventsPreview}>
+      <section className={styles.eventsPreview} data-reveal>
         <div>
           <p className={styles.eyebrow}>The table has stories</p>
           <h2>Events, coming soon.</h2>
@@ -210,7 +212,7 @@ export default function Home() {
         <a className={styles.textLink} href="/events/">Visit the events journal</a>
       </section>
 
-      <section className={styles.contact} id="contact">
+      <section className={styles.contact} id="contact" data-reveal>
         <p className={styles.eyebrow}>Let&apos;s make something delicious</p>
         <h2>Tell us what you&apos;re planning.</h2>
         <p>Share your date, guest count, dietary needs and the kind of service you have in mind. Free samples are available on request.</p>
@@ -228,6 +230,9 @@ export default function Home() {
       <footer className={styles.footer}>
         <div className={styles.footerBrand}>Topsy&apos;s Cuisine</div>
         <p>Bulawayo, Zimbabwe · A taste of heaven</p>
+        <a className={styles.siteCredit} href="https://neongwenya.co.za" target="_blank" rel="noreferrer">
+          Website done by Neo Ngwenya
+        </a>
         <p>© {new Date().getFullYear()} Topsy&apos;s Cuisine</p>
       </footer>
     </main>

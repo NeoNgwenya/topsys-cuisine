@@ -1,4 +1,5 @@
 import styles from "./events.module.scss";
+import MotionObserver from "../MotionObserver";
 
 export const metadata = {
   title: "Events | Topsy's Cuisine",
@@ -8,11 +9,12 @@ export const metadata = {
 export default function EventsPage() {
   return (
     <main className={styles.page}>
+      <MotionObserver />
       <nav className={styles.nav}>
         <a href="/">← Back home</a>
         <span>Topsy&apos;s Cuisine</span>
       </nav>
-      <section className={styles.content}>
+      <section className={styles.content} data-reveal>
         <p className={styles.eyebrow}>Events journal</p>
         <h1>Every table<br />tells a story.</h1>
         <p>
