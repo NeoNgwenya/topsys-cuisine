@@ -3,9 +3,9 @@ import "./globals.scss";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.topsyscuisine.co.zw"),
-  title: "Topsy's Cuisine | Executive Catering",
+  title: "Topsy's Cuisine | Catering, Family Meals & Private Chef",
   description:
-    "Executive catering, tailor-made menus and dependable event service from Topsy's Cuisine.",
+    "Family meals, packed lunches, freezer-ready meals, private-chef experiences and event catering from Topsy's Cuisine in Bulawayo.",
   alternates: {
     canonical: "/",
   },
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: "Topsy's Cuisine",
-    title: "Topsy's Cuisine | Executive Catering",
+    title: "Topsy's Cuisine | Food for Every Table",
     description:
-      "Fine food, tailor-made menus and dependable catering for events where every detail matters.",
+      "Family meals, packed lunches, private-chef experiences and dependable catering, made with heart in Bulawayo.",
     images: [
       {
         url: "/SEO_image.jpg",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Topsy's Cuisine | Executive Catering",
+    title: "Topsy's Cuisine | Food for Every Table",
     description:
-      "Fine food, tailor-made menus and dependable catering for events where every detail matters.",
+      "Family meals, packed lunches, private-chef experiences and dependable catering, made with heart in Bulawayo.",
     images: ["/SEO_image.jpg"],
   },
   robots: {
@@ -48,7 +48,7 @@ const businessStructuredData = {
   url: "https://www.topsyscuisine.co.zw/",
   image: "https://www.topsyscuisine.co.zw/SEO_image.jpg",
   description:
-    "Executive catering, tailor-made menus and dependable event service from Topsy's Cuisine.",
+    "Family meals, packed lunches, freezer-ready meals, private-chef experiences and event catering from Topsy's Cuisine in Bulawayo.",
   email: "topsyscuisine@gmail.com",
   telephone: "+263710825380",
   sameAs: [
