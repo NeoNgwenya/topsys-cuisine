@@ -1,4 +1,5 @@
 import Image from "next/image";
+import GalleryCarousel from "./GalleryCarousel";
 import MotionObserver from "./MotionObserver";
 import styles from "./page.module.scss";
 
@@ -97,19 +98,43 @@ export default function Home() {
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Made in Bulawayo</p>
-          <h1>Food for<br /><em>every table.</em></h1>
-          <p className={styles.heroIntro}>Family meals, packed lunches, private-chef experiences and full-service catering—made with heart and ready for your occasion.</p>
-          <div className={styles.heroActions}>
-            <a className={styles.primaryButton} href={whatsappHref} target="_blank" rel="noreferrer">Order or plan a menu</a>
+          <div>
+            <p className={styles.eyebrow}>Made in Bulawayo</p>
+            <h1>Food for <em>every table.</em></h1>
+          </div>
+          <div className={styles.heroBadge} data-pop data-pop-delay="hero"><span>Made with</span><strong>heart</strong></div>
+          <div className={styles.heroDetails}>
+            <p className={styles.heroIntro}>Family meals, packed lunches, private-chef experiences and full-service catering—made with heart and ready for your occasion.</p>
             <a className={`${styles.textLink} ${styles.iconLink}`} href="tel:+263710825380" aria-label="Call Topsy on +263 71 082 5380"><PhoneIcon /> Call Topsy</a>
           </div>
         </div>
         <div className={styles.heroVisual}>
           <div className={styles.heroImageWrap}>
-            <Image src="/images/services/family-meals.jpg" alt="Freshly packed family meals prepared by Topsy's Cuisine" fill priority sizes="(max-width: 800px) 100vw, 52vw" className={styles.heroImage} />
+            <Image src="/images/services/family-meals.jpg" alt="Freshly packed family meals prepared by Topsy's Cuisine" fill priority sizes="(max-width: 1500px) 92vw, 1400px" className={styles.heroImage} />
+            <a className={`${styles.primaryButton} ${styles.heroOrder}`} href={whatsappHref} target="_blank" rel="noreferrer">Order or plan a menu</a>
           </div>
-          <div className={styles.heroBadge} data-pop data-pop-delay="hero"><span>Made with</span><strong>heart</strong></div>
+        </div>
+        <div className={styles.heroBenefits}>
+          <ul aria-label="Our catering promises" role="list">
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 4c-7 0-13 2-13 8a5 5 0 0 0 5 5c6 0 8-6 8-13ZM4 20l10-10" />
+              </svg>
+              <p><strong>Fresh</strong> ingredients and strict quality control</p>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h5m4 0h7M4 12h9m4 0h3M4 18h3m4 0h9M9 4v4m8 2v4m-6 2v4" />
+              </svg>
+              <p><strong>Flexible</strong> menus for dietary and healthy-eating needs</p>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 17h18M5 17v-2a7 7 0 0 1 14 0v2M12 8V5m-1 0h2M5 20h14" />
+              </svg>
+              <p><strong>Complete</strong> service with tableware and equipment available</p>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -173,6 +198,7 @@ export default function Home() {
 
       <section className={styles.gallerySection} id="gallery" data-reveal>
         <div className={styles.galleryHeading}><div><p className={styles.eyebrow}>From our kitchen</p><h2>A little taste<br />of what we make.</h2></div><p>Freshly prepared, generously served and made for sharing—from single packed meals to whole family tables.</p></div>
+        <GalleryCarousel images={gallery} />
         <div className={styles.galleryGrid}>{gallery.map((image, index) => (<figure className={styles[`galleryItem${index + 1}`]} key={image.src} data-reveal-child><Image src={image.src} alt={image.alt} fill sizes="(max-width: 800px) 100vw, 50vw" /></figure>))}</div>
       </section>
 
