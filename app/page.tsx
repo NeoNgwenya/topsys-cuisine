@@ -104,7 +104,7 @@ export default function Home() {
           </div>
           <div className={styles.heroBadge} data-pop data-pop-delay="hero"><span>Made with</span><strong>heart</strong></div>
           <div className={styles.heroDetails}>
-            <p className={styles.heroIntro}>Family meals, packed lunches, private-chef experiences and full-service catering—made with heart and ready for your occasion.</p>
+            <p className={styles.heroIntro}>Family meals, packed lunches, private-chef experiences and full-service catering, made with heart and ready for your occasion.</p>
             <a className={`${styles.textLink} ${styles.iconLink}`} href="tel:+263710825380" aria-label="Call Topsy on +263 71 082 5380"><PhoneIcon /> Call Topsy</a>
           </div>
         </div>
@@ -197,7 +197,7 @@ export default function Home() {
       </section>
 
       <section className={styles.gallerySection} id="gallery" data-reveal>
-        <div className={styles.galleryHeading}><div><p className={styles.eyebrow}>From our kitchen</p><h2>A little taste<br />of what we make.</h2></div><p>Freshly prepared, generously served and made for sharing—from single packed meals to whole family tables.</p></div>
+        <div className={styles.galleryHeading}><div><p className={styles.eyebrow}>From our kitchen</p><h2>A little taste<br />of what we make.</h2></div><p>Freshly prepared, generously served and made for sharing, from single packed meals to whole family tables.</p></div>
         <GalleryCarousel images={gallery} />
         <div className={styles.galleryGrid}>{gallery.map((image, index) => (<figure className={styles[`galleryItem${index + 1}`]} key={image.src} data-reveal-child><Image src={image.src} alt={image.alt} fill sizes="(max-width: 800px) 100vw, 50vw" /></figure>))}</div>
       </section>
