@@ -110,7 +110,7 @@ export default function Home() {
         </div>
         <div className={styles.heroVisual}>
           <div className={styles.heroImageWrap}>
-            <Image src="/images/services/family-meals.jpg" alt="Freshly packed family meals prepared by Topsy's Cuisine" fill priority sizes="(max-width: 1500px) 92vw, 1400px" className={styles.heroImage} />
+            <Image src="/images/IMG-20231028-WA0015.jpg" alt="A chef finishing a plate of chicken, rice, and vegetables" fill priority sizes="(max-width: 1500px) 92vw, 1400px" className={styles.heroImage} />
             <a className={`${styles.primaryButton} ${styles.heroOrder}`} href={whatsappHref} target="_blank" rel="noreferrer">Order or plan a menu</a>
           </div>
         </div>
